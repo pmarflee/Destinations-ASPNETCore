@@ -1,0 +1,42 @@
+@model Destinations.Models.ViewModel
+
+<html>
+<head>
+    <title>Destinations</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link rel="stylesheet" type="text/css" href="css/style.min.css">
+</head>
+<body>
+    <div class="content">
+        <div class="container">
+            <div class="sixteen columns padded whitebg">
+                <div class="sixteen columns alpha omega">
+                    <div class="dropdownStatic">
+                      @foreach (var region in Model.Regions)
+                      {
+                        <span class="headinglink">@region.Name</span>
+                        <ul>
+                          <div class="row">
+                            @foreach (var column in region.Columns)
+                            {
+                              <div class="two columns">
+                                @foreach (var country in column.Countries)
+                                {
+                                  <li><a href="/@country.Link">@country.Name</a></li>
+                                }
+                                @if (!column.IsLastColumn)
+                                {
+                                  <br/>
+                                }
+                              </div>
+                            }
+                            <br/>
+                          </div>
+                        </ul>
+                      }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
